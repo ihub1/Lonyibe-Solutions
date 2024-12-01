@@ -14,36 +14,42 @@
       color: #333;
     }
 
+    /* Navigation Styles */
     nav {
       background: #333;
       color: #fff;
       padding: 20px;
-      text-align: center;
-      overflow: hidden; 
+      position: fixed; /* Make the nav fixed */
+      top: 0;
+      left: 0;
+      width: 200px; /* Adjust width as needed */
+      height: 100%;
+      overflow-y: auto; /* Add scroll if needed */
     }
 
     nav ul {
       list-style: none;
       margin: 0;
       padding: 0;
-      display: inline-flex; 
+      display: flex;
+      flex-direction: column; /* Align items vertically */
     }
 
     nav li {
-      margin: 0 15px;
+      margin: 0 0 10px 0; /* Adjust spacing as needed */
     }
 
     nav a {
       text-decoration: none;
       color: #fff;
-      display: block; 
       padding: 10px;
+      display: block; /* Make the links fill the width */
       position: relative;
       transition: color 0.3s ease;
     }
 
     nav a:hover {
-      color: #f9ca24; 
+      color: #f9ca24;
     }
 
     nav a::before {
@@ -78,26 +84,32 @@
 
     .toggle-switch {
       position: relative;
-      display: inline-block;
+      display: block; /* Make the toggle a block element */
       width: 60px;
       height: 34px;
-      margin-left: 20px;
+      margin: 20px auto; /* Center the toggle */
     }
 
     .toggle-checkbox {
-      display: none;
+      opacity: 0;
+      width: 0;
+      height: 0;
     }
 
     .toggle-label {
       position: absolute;
+      cursor: pointer;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
+      right: 0;
+      bottom: 0;
       background-color: #ccc;
-      cursor: pointer;
+      border-radius: 34px;
       transition: background-color 0.3s ease;
+    }
+
+    .toggle-checkbox:checked + .toggle-label {
+      background-color: #2196F3;
     }
 
     .toggle-ball {
@@ -107,12 +119,8 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background-color: #fff;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .toggle-checkbox:checked + .toggle-label {
-      background-color: #2196F3;
+      background-color: white;
+      transition: transform 0.3s ease;
     }
 
     .toggle-checkbox:checked + .toggle-label .toggle-ball {
@@ -122,6 +130,7 @@
     .content {
       text-align: center;
       padding: 50px;
+      margin-left: 220px; /* Adjust margin to avoid overlap with nav */
     }
 
     .contact-btn {
@@ -134,23 +143,23 @@
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease; 
       text-decoration: none; 
-      color: white; 
+      color: white;
     }
 
     .telegram-btn {
-      background-color: #0088cc; 
+      background-color: #0088cc;
     }
 
     .email-btn {
-      background-color: #ff4500; 
+      background-color: #ff4500;
     }
 
     .call-btn {
-      background-color: #25D366; 
+      background-color: #25D366;
     }
 
     .contact-btn:hover {
-      transform: translateY(-3px); 
+      transform: translateY(-3px);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     }
   </style>
@@ -186,7 +195,6 @@
 
   <script>
     const darkModeToggle = document.getElementById('darkModeToggle');
-
     darkModeToggle.addEventListener('change', () => {
       document.body.classList.toggle('dark-mode');
     });

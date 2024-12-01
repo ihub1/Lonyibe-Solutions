@@ -8,43 +8,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
   <style>
      body {
-      font-family: 'Poppins', sans-serif; 
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       transition: background-color 0.3s ease, color 0.3s ease;
       background-color: #f4f4f4;
       color: #333;
     }
 
+    /* Navigation Styles */
     nav {
       background: #333;
       color: #fff;
       padding: 20px;
-      text-align: center;
-      overflow: hidden; 
+      position: fixed; /* Make the nav fixed */
+      top: 0;
+      left: 0;
+      width: 200px; /* Adjust width as needed */
+      height: 100%;
+      overflow-y: auto; /* Add scroll if needed */
     }
 
     nav ul {
       list-style: none;
       margin: 0;
       padding: 0;
-      display: inline-flex; 
+      display: flex;
+      flex-direction: column; /* Align items vertically */
     }
 
     nav li {
-      margin: 0 15px;
+      margin: 0 0 10px 0; /* Adjust spacing as needed */
     }
 
     nav a {
       text-decoration: none;
       color: #fff;
-      display: block; 
       padding: 10px;
+      display: block; /* Make the links fill the width */
       position: relative; 
       transition: color 0.3s ease;
     }
 
     nav a:hover {
-      color: #f9ca24; 
+      color: #f9ca24;
     }
 
     nav a::before {
@@ -68,6 +74,7 @@
       margin-right: 5px;
     }
 
+    /* Dark Mode Styles */
     body.dark-mode {
       background-color: #333;
       color: #fff;
@@ -77,28 +84,35 @@
       background-color: #222;
     }
 
+    /* Toggle Switch Styles */
     .toggle-switch {
       position: relative;
-      display: inline-block;
+      display: block; /* Make the toggle a block element */
       width: 60px;
       height: 34px;
-      margin-left: 20px;
+      margin: 20px auto; /* Center the toggle */
     }
 
     .toggle-checkbox {
-      display: none;
+      opacity: 0;
+      width: 0;
+      height: 0;
     }
 
     .toggle-label {
       position: absolute;
+      cursor: pointer;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
+      right: 0;
+      bottom: 0;
       background-color: #ccc;
-      cursor: pointer;
+      border-radius: 34px;
       transition: background-color 0.3s ease;
+    }
+
+    .toggle-checkbox:checked + .toggle-label {
+      background-color: #2196F3;
     }
 
     .toggle-ball {
@@ -108,20 +122,16 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background-color: #fff;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .toggle-checkbox:checked + .toggle-label {
-      background-color: #2196F3;
+      background-color: white;
+      transition: transform 0.3s ease;
     }
 
     .toggle-checkbox:checked + .toggle-label .toggle-ball {
       transform: translateX(26px);
     }
-
     .content {
-      padding: 50px 100px; 
+      padding: 50px;
+      margin-left: 220px; /* Adjust margin to avoid overlap with nav */
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
@@ -196,9 +206,7 @@
   </div>
 
   <script>
-    // Dark mode toggle (same as in index.html)
     const darkModeToggle = document.getElementById('darkModeToggle');
-
     darkModeToggle.addEventListener('change', () => {
       document.body.classList.toggle('dark-mode');
     });

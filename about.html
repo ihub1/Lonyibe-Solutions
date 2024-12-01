@@ -21,32 +21,37 @@
       background: #333;
       color: #fff;
       padding: 20px;
-      text-align: center;
-      overflow: hidden; 
+      position: fixed; /* Make the nav fixed */
+      top: 0;
+      left: 0;
+      width: 200px; /* Adjust width as needed */
+      height: 100%;
+      overflow-y: auto; /* Add scroll if needed */
     }
 
     nav ul {
       list-style: none;
       margin: 0;
       padding: 0;
-      display: inline-flex; 
+      display: flex;
+      flex-direction: column; /* Align items vertically */
     }
 
     nav li {
-      margin: 0 15px;
+      margin: 0 0 10px 0; /* Adjust spacing as needed */
     }
 
     nav a {
       text-decoration: none;
       color: #fff;
-      display: block; 
       padding: 10px;
+      display: block; /* Make the links fill the width */
       position: relative; 
       transition: color 0.3s ease;
     }
 
     nav a:hover {
-      color: #f9ca24; 
+      color: #f9ca24;
     }
 
     nav a::before {
@@ -83,26 +88,32 @@
     /* Toggle Switch Styles */
     .toggle-switch {
       position: relative;
-      display: inline-block;
+      display: block; /* Make the toggle a block element */
       width: 60px;
       height: 34px;
-      margin-left: 20px;
+      margin: 20px auto; /* Center the toggle */
     }
 
     .toggle-checkbox {
-      display: none;
+      opacity: 0;
+      width: 0;
+      height: 0;
     }
 
     .toggle-label {
       position: absolute;
+      cursor: pointer;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
+      right: 0;
+      bottom: 0;
       background-color: #ccc;
-      cursor: pointer;
+      border-radius: 34px;
       transition: background-color 0.3s ease;
+    }
+
+    .toggle-checkbox:checked + .toggle-label {
+      background-color: #2196F3;
     }
 
     .toggle-ball {
@@ -112,49 +123,49 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background-color: #fff;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .toggle-checkbox:checked + .toggle-label {
-      background-color: #2196F3;
+      background-color: white;
+      transition: transform 0.3s ease;
     }
 
     .toggle-checkbox:checked + .toggle-label .toggle-ball {
       transform: translateX(26px);
     }
 
-    /* Content Styles */
     .content {
       padding: 50px;
+      margin-left: 220px; /* Adjust margin to avoid overlap with nav */
       text-align: center;
     }
 
-    .content h1 {
-      font-size: 2.5em; 
+    h1 {
+      font-size: 3em;
       margin-bottom: 20px;
     }
 
-    .content h2 {
-      font-size: 1.8em; 
-      margin-bottom: 15px;
-    }
-
-    .content p {
+    p {
       font-size: 1.2em;
       line-height: 1.6;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
-    .content ul {
-      text-align: left; 
-      margin-bottom: 20px;
+    ul { /* Style for the unordered list */
+      text-align: left; /* Align list items to the left */
+      list-style-type: disc; /* Use bullet points for list items */
     }
 
-    .content li {
+    .learn-more-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #f9ca24;
+      color: #fff;
+      text-decoration: none;
       font-size: 1.2em;
-      line-height: 1.6;
-      margin-bottom: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .learn-more-btn:hover {
+      background-color: #e5b10c;
     }
   </style>
 </head>
@@ -178,10 +189,12 @@
   <div class="content">
     <h1>About Lonyibe Solutions</h1>
 
-    <p>Lonyibe Solutions is a dynamic and innovative company dedicated to helping businesses thrive in the digital age. We offer a comprehensive suite of services designed to empower our clients with the tools and strategies they need to succeed.</p>
+    <p>Lonyibe Solutions is a dynamic and innovative company dedicated to helping businesses thrive in the digital age.
+    We offer a comprehensive suite of services designed to empower our clients with the tools and strategies they need to succeed.</p>
 
     <h2>Our Mission</h2>
-    <p>Our mission is to deliver exceptional value and build long-lasting partnerships with our clients. We are committed to providing cutting-edge solutions, exceeding expectations, and driving meaningful results.</p>
+    <p>Our mission is to deliver exceptional value and build long-lasting partnerships with our clients.
+    We are committed to providing cutting-edge solutions, exceeding expectations, and driving meaningful results.</p>
 
     <h2>Our Values</h2>
     <ul>
@@ -192,13 +205,12 @@
     </ul>
 
     <h2>Our Team</h2>
-    <p>Our team comprises experienced professionals with diverse skills and expertise in web development, digital marketing, and business strategy. We are passionate about helping businesses achieve their full potential.</p>
+    <p>Our team comprises experienced professionals with diverse skills and expertise in web development, digital marketing, and business strategy.
+    We are passionate about helping businesses achieve their full potential.</p>
   </div>
 
   <script>
-    // Dark mode toggle (same as in index.html and services.html)
     const darkModeToggle = document.getElementById('darkModeToggle');
-
     darkModeToggle.addEventListener('change', () => {
       document.body.classList.toggle('dark-mode');
     });

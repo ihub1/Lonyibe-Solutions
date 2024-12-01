@@ -1,215 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lonyibe Solutions</title> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      background-color: #f4f4f4;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Website</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+        }
 
-    nav {
-      background: #333;
-      color: #fff;
-      padding: 10px; /* Reduced padding for smaller screens */
-      position: fixed; 
-      top: 0;
-      left: 0;
-      width: 100%; /* Full width on small screens */
-      height: auto; /* Adjust height automatically */
-      overflow-y: auto; 
-      z-index: 1000; /* Ensure nav is on top */
-    }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column; 
-    }
+        header {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
 
-    nav li {
-      margin: 0 0 10px 0; 
-    }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
 
-    nav a {
-      text-decoration: none;
-      color: #fff;
-      padding: 10px;
-      display: block; 
-      position: relative;
-      transition: color 0.3s ease;
-    }
+        nav li {
+            display: inline-block;
+            margin: 0 10px;
+        }
 
-    nav a:hover {
-      color: #f9ca24;
-    }
+        main {
+            padding: 20px;
+        }
 
-    nav a::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: #f9ca24;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
 
-    nav a:hover::before {
-      transform: scaleX(1);
-    }
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
 
-    nav i {
-      margin-right: 5px;
-    }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
 
-    body.dark-mode {
-      background-color: #333;
-      color: #fff;
-    }
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                text-align: left;
+            }
 
-    .dark-mode nav {
-      background-color: #222;
-    }
-
-    .toggle-switch {
-      position: relative;
-      display: block; 
-      width: 60px;
-      height: 34px;
-      margin: 20px auto; 
-    }
-
-    .toggle-checkbox {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .toggle-label {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      border-radius: 34px;
-      transition: background-color 0.3s ease;
-    }
-
-    .toggle-checkbox:checked + .toggle-label {
-      background-color: #2196F3;
-    }
-
-    .toggle-ball {
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: white;
-      transition: transform 0.3s ease;
-    }
-
-    .toggle-checkbox:checked + .toggle-label .toggle-ball {
-      transform: translateX(26px);
-    }
-
-    .content {
-      text-align: center;
-      padding: 20px; /* Reduced padding for smaller screens */
-      margin-top: 100px; /* Adjust top margin to account for nav */
-    }
-
-    h1 {
-      font-size: 2em; /* Reduced font size for smaller screens */
-      margin-bottom: 10px; /* Reduced margin for smaller screens */
-    }
-
-    p {
-      font-size: 1em; /* Reduced font size for smaller screens */
-      line-height: 1.6;
-      margin-bottom: 20px; /* Reduced margin for smaller screens */
-    }
-
-    .learn-more-btn {
-      display: inline-block;
-      padding: 10px 20px; /* Reduced padding for smaller screens */
-      background-color: #f9ca24;
-      color: #fff;
-      text-decoration: none;
-      font-size: 1em; /* Reduced font size for smaller screens */
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-
-    .learn-more-btn:hover {
-      background-color: #e5b10c;
-    }
-
-    /* Media Query for Smaller Screens */
-    @media (max-width: 600px) {
-      nav {
-        position: static; /* Make nav static on small screens */
-        width: 100%;
-        height: auto;
-      }
-
-      .content {
-        margin-left: 0; /* Reset margin for smaller screens */
-        margin-top: 20px; /* Adjust top margin for smaller screens */
-      }
-    }
-  </style>
+            nav li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <nav>
-    <ul>
-      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li> 
-      <li><a href="services.html"><i class="fas fa-briefcase"></i> Services</a></li>
-      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li> 
-    </ul>
+    <header>
+        <h1>Responsive Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <ul>
-      <li><a href="bible.html"><i class="fas fa-book-bible"></i> Bible</a></li>
-    </ul>
+    <main>
+        <div class="container">
+            <div class="grid">
+                <div class="card">
+                    <h2>Card 1</h2>
+                    <p>Some text content for card 1.</p>
+                </div>
+                <div class="card">
+                    <h2>Card 2</h2>
+                    <p>Some text content for card 2.</p>
+                </div>
+                <div class="card">
+                    <h2>Card 3</h2>
+                    <p>Some text content for card 3.</p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <div class="toggle-switch">
-      <input type="checkbox" id="darkModeToggle" class="toggle-checkbox">
-      <label for="darkModeToggle" class="toggle-label">
-        <span class="toggle-ball"></span>
-      </label>
-    </div>
-  </nav>
-
-  <div class="content">
-    <h1>Welcome to Lonyibe Solutions</h1> 
-    <p>We are a team of experienced professionals dedicated to providing innovative and reliable solutions for your business needs.
-      Our expertise lies in web development, digital marketing, and strategic consulting.
-      We strive to empower our clients with the tools and strategies they need to succeed in today's dynamic market.</p>
-    <a href="contact.html" class="learn-more-btn">Learn More</a> 
-  </div>
-
-  <script>
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    darkModeToggle.addEventListener('change', () => {
-      document.body.classList.toggle('dark-mode');
-    });
-  </script>
+    <footer>
+        <p>&copy; 2023 Responsive Website</p>
+    </footer>
 
 </body>
 </html>

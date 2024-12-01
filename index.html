@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lonyibe Solutions</title> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/css/all.min.css">
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -17,13 +17,14 @@
     nav {
       background: #333;
       color: #fff;
-      padding: 20px;
+      padding: 10px; /* Reduced padding for smaller screens */
       position: fixed; 
       top: 0;
       left: 0;
-      width: 200px; 
-      height: 100%;
+      width: 100%; /* Full width on small screens */
+      height: auto; /* Adjust height automatically */
       overflow-y: auto; 
+      z-index: 1000; /* Ensure nav is on top */
     }
 
     nav ul {
@@ -128,34 +129,48 @@
 
     .content {
       text-align: center;
-      padding: 50px;
-      margin-left: 220px; 
+      padding: 20px; /* Reduced padding for smaller screens */
+      margin-top: 100px; /* Adjust top margin to account for nav */
     }
 
     h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
+      font-size: 2em; /* Reduced font size for smaller screens */
+      margin-bottom: 10px; /* Reduced margin for smaller screens */
     }
 
     p {
-      font-size: 1.2em;
+      font-size: 1em; /* Reduced font size for smaller screens */
       line-height: 1.6;
-      margin-bottom: 30px;
+      margin-bottom: 20px; /* Reduced margin for smaller screens */
     }
 
     .learn-more-btn {
       display: inline-block;
-      padding: 15px 30px;
+      padding: 10px 20px; /* Reduced padding for smaller screens */
       background-color: #f9ca24;
       color: #fff;
       text-decoration: none;
-      font-size: 1.2em;
+      font-size: 1em; /* Reduced font size for smaller screens */
       border-radius: 5px;
       transition: background-color 0.3s ease;
     }
 
     .learn-more-btn:hover {
       background-color: #e5b10c;
+    }
+
+    /* Media Query for Smaller Screens */
+    @media (max-width: 600px) {
+      nav {
+        position: static; /* Make nav static on small screens */
+        width: 100%;
+        height: auto;
+      }
+
+      .content {
+        margin-left: 0; /* Reset margin for smaller screens */
+        margin-top: 20px; /* Adjust top margin for smaller screens */
+      }
     }
   </style>
 </head>
